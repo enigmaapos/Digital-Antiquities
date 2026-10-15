@@ -1,6 +1,16 @@
 const WALLET_ADDRESS = '0x494d8866f098a363e4effdfef2f5e240730b4c2a';
 const API_BASE = 'https://api.opensea.io/api/v2';
 
+function normalizeImageUrl(value) {
+  if (typeof value !== 'string') return '';
+  const raw = value.trim();
+  if (!raw) return '';
+  if (raw.startsWith('ipfs://')) return `https://ipfs.io/ipfs/${raw.slice(7).replace(/^ipfs\//, '')}`;
+  if (raw.startsWith('ar://')) return `https://arweave.net/${raw.slice(5)}`;
+  if (raw.startsWith('//')) return `https:${raw}`;
+  return raw;
+}
+
 async function openSeaFetch(url, apiKey) {
   const response = await fetch(url, { headers: { accept: 'application/json', 'x-api-key': apiKey } });
   if (!response.ok) {
@@ -37,7 +47,9 @@ async function enrichListing(listing, apiKey) {
   const imageAlreadyPresent = oldAsset.image_url || oldAsset.display_image_url || oldAsset.image ||
     oldAsset.image_original_url || oldAsset.metadata?.image;
   if (imageAlreadyPresent && oldAsset.contract && (oldAsset.identifier ?? oldAsset.token_id)) {
-    return { ...listing, asset: { ...oldAsset, contract: ref.contract, identifier: ref.identifier } };
+    return { ...listing, asset: { ...oldAsset, contract: ref.contract, identifier: ref.identifier,
+      image_url: normalizeImageUrl(oldAsset.image_url || oldAsset.display_image_url || oldAsset.image_original_url || oldAsset.image || oldAsset.metadata?.image || ''),
+      display_image_url: normalizeImageUrl(oldAsset.display_image_url || oldAsset.image_url || oldAsset.image_original_url || oldAsset.image || oldAsset.metadata?.image || '') } };
   }
   try {
     const chain = encodeURIComponent(String(ref.chain).toLowerCase());
@@ -54,17 +66,19 @@ async function enrichListing(listing, apiKey) {
         identifier: String(nft.identifier ?? ref.identifier),
         name: oldAsset.name || nft.name || metadata.name || `NFT #${ref.identifier}`,
         collection: oldAsset.collection || nft.collection || nft.collection_name || '',
-        image_url: oldAsset.image_url || nft.image_url || nft.display_image_url || nft.image_original_url ||
-          nft.image || metadata.image || '',
-        display_image_url: oldAsset.display_image_url || nft.display_image_url || nft.image_url ||
-          nft.image_original_url || nft.image || metadata.image || '',
-        image_original_url: oldAsset.image_original_url || nft.image_original_url || nft.image_url || metadata.image || '',
+        image_url: normalizeImageUrl(oldAsset.image_url || nft.image_url || nft.display_image_url || nft.image_original_url ||
+          nft.image || metadata.image || metadata.image_url || ''),
+        display_image_url: normalizeImageUrl(oldAsset.display_image_url || nft.display_image_url || nft.image_url ||
+          nft.image_original_url || nft.image || metadata.image || metadata.image_url || ''),
+        image_original_url: normalizeImageUrl(oldAsset.image_original_url || nft.image_original_url || nft.image_url || metadata.image || metadata.image_url || ''),
         metadata
       }
     };
   } catch (e) {
     // Keep the listing visible even if one NFT's metadata cannot be fetched.
-    return { ...listing, asset: { ...oldAsset, contract: ref.contract, identifier: ref.identifier } };
+    return { ...listing, asset: { ...oldAsset, contract: ref.contract, identifier: ref.identifier,
+      image_url: normalizeImageUrl(oldAsset.image_url || oldAsset.display_image_url || oldAsset.image_original_url || oldAsset.image || oldAsset.metadata?.image || ''),
+      display_image_url: normalizeImageUrl(oldAsset.display_image_url || oldAsset.image_url || oldAsset.image_original_url || oldAsset.image || oldAsset.metadata?.image || '') } };
   }
 }
 
