@@ -310,7 +310,15 @@ function updateExhibitionPosition(scrollIntoView = true) {
   const cards = [...exhibitionTrainTrack.querySelectorAll('.train-carriage')];
   if (!cards.length) return;
   exhibitionIndex = (exhibitionIndex + cards.length) % cards.length;
-  if (scrollIntoView) cards[exhibitionIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  // Scroll the train viewport horizontally only. Element.scrollIntoView() can
+  // also move the entire document vertically, which yanks visitors back to the
+  // exhibition when they are reading sections farther down the page.
+  if (scrollIntoView) {
+    const viewport = exhibitionViewport;
+    const card = cards[exhibitionIndex];
+    const targetLeft = Math.max(0, card.offsetLeft - exhibitionTrainTrack.offsetLeft - 14);
+    viewport.scrollTo({ left: targetLeft, behavior: 'smooth' });
+  }
   exhibitionStatus.textContent = `Carriage ${String(exhibitionIndex + 1).padStart(2,'0')} of ${String(cards.length).padStart(2,'0')} · one unlisted NFT representative per collection · auto-advances every 8 seconds.`;
 }
 function moveExhibition(direction) {
