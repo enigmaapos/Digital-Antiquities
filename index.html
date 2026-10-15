@@ -43,28 +43,43 @@ body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),r
 @media(max-width:800px){.auction-stage{grid-template-columns:1fr}.stage-art{min-height:290px;border-right:0;border-bottom:1px solid #6b512c}.stage-orbit{width:170px;height:170px}.stage-glyph{font-size:95px}.stage-features{grid-template-columns:1fr;gap:14px}.stage-features>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.stage-features small{margin:0}}
 
 
-/* Grand Exhibition Hall: unlisted NFTs held by the configured wallet */
-.exhibition-shell{display:grid;grid-template-columns:1fr 1fr;border:1px solid #6b512c;background:linear-gradient(135deg,#21190e,#100f0d 58%);box-shadow:0 20px 60px #0005;min-height:380px}
-.exhibition-art{position:relative;min-height:380px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#8c682d 0,#443019 25%,#21180e 53%,#0d0c0a 80%);border-right:1px solid #6b512c}
-.exhibition-art:before{content:"";position:absolute;inset:22px;border:1px solid #d8b66b55;pointer-events:none;z-index:2}
-.exhibition-art img{width:100%;height:100%;min-height:380px;object-fit:contain;position:absolute;inset:0;z-index:1;padding:25px;transition:opacity .35s ease}
-.exhibition-orbit{position:absolute;width:210px;height:210px;border:1px solid #e8cc8a88;border-radius:50%;box-shadow:0 0 0 20px #d8b66b0b,0 0 0 44px #d8b66b0a,0 0 60px #d8b66b24}
-.exhibition-placeholder{z-index:1;color:#f1d58c;font:120px Georgia,serif;text-shadow:0 0 40px #f1d58c66}
-.exhibition-info{padding:clamp(24px,4vw,42px);align-self:center;min-width:0}
-.exhibition-kicker{display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-size:10px;letter-spacing:.14em;color:var(--gold2)}
-.exhibition-badge{border:1px solid #7c683d;padding:4px 7px;font-size:9px;color:#e7d7b1}
-.exhibition-info h3{font:clamp(28px,3.4vw,42px)/1.1 Georgia,serif;margin:22px 0 12px;overflow-wrap:anywhere}
-.exhibition-info>p{color:#c4bdae;font-size:14px}
-.exhibition-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;border-block:1px solid #4b3b25;padding:18px 0;margin:22px 0}
-.exhibition-meta small{display:block;color:#b9a06b;font-size:9px;letter-spacing:.1em;margin-bottom:6px}
-.exhibition-meta strong{font:14px Georgia,serif;color:#f2e6c9;overflow-wrap:anywhere}
-.exhibition-controls{display:flex;gap:8px;flex-wrap:wrap}
-.exhibition-controls .btn{font-size:12px;padding:12px 15px;min-height:44px;font-weight:800;letter-spacing:.02em}
-#exhibitionPrevious,#exhibitionNext{background:var(--gold);color:#111009;border:2px solid var(--gold);text-shadow:none;min-width:112px;box-shadow:0 3px 12px #0007}
-#exhibitionPrevious:hover,#exhibitionNext:hover{background:var(--gold2);border-color:var(--gold2);color:#090806}
+/* Royal Auction Express — train-style NFT exhibition */
+.exhibition-train{position:relative;overflow:hidden;border:1px solid #765a2b;background:linear-gradient(180deg,#1b1710 0%,#0d0c0a 68%);box-shadow:0 22px 65px #0008}
+.train-marquee{display:flex;align-items:center;gap:18px;padding:20px 24px;border-bottom:1px solid #604923;background:linear-gradient(90deg,#302311,#17120c 70%)}
+.train-emblem{flex:0 0 66px;width:66px;height:66px;border:1px solid #d8b66b88;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#5a421e,#17120c 72%);color:var(--gold2);font-size:34px;box-shadow:0 0 25px #d8b66b20}
+.train-marquee h3{font:clamp(20px,3vw,30px)/1.1 Georgia,serif;color:#f5dfa6;margin:0;letter-spacing:.07em;text-transform:uppercase}
+.train-marquee p{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#c2ad7f;margin:7px 0 0}
+.train-lights{margin-left:auto;display:flex;gap:7px;align-items:center;white-space:nowrap;color:#d8b66b;font-size:10px;letter-spacing:.14em}
+.train-lights span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#e9c875;box-shadow:0 0 10px #e9c875;animation:trainSignal 1.8s infinite alternate}
+.train-viewport{position:relative;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:32px 24px 48px;scrollbar-color:#9c793c #17120c;scrollbar-width:thin}
+.train-track{display:flex;align-items:stretch;gap:24px;width:max-content;min-width:100%;position:relative;padding:0 14px 16px}
+.train-track:before{content:"";position:absolute;left:0;right:0;bottom:5px;height:8px;background:repeating-linear-gradient(90deg,#6c542e 0 3px,transparent 3px 24px);border-top:2px solid #b08a47;border-bottom:2px solid #6c542e}
+.train-carriage{position:relative;flex:0 0 clamp(245px,28vw,310px);width:clamp(245px,28vw,310px);scroll-snap-align:start;border:1px solid #9c793e;background:linear-gradient(155deg,#302312,#14110c 72%);box-shadow:0 12px 28px #0007;overflow:visible}
+.train-carriage:before{content:"";position:absolute;left:7px;right:7px;top:-10px;height:9px;border:1px solid #b08a47;border-bottom:0;background:linear-gradient(90deg,#b18b4b,#e4c77c,#88632f);clip-path:polygon(3% 0,97% 0,100% 100%,0 100%)}
+.train-carriage:after{content:"";position:absolute;left:20%;right:20%;bottom:-16px;height:14px;border-radius:0 0 12px 12px;border:2px solid #b18b4b;border-top:0;background:radial-gradient(circle at 20% 50%,#17120b 0 5px,#a98442 6px 7px,transparent 8px),radial-gradient(circle at 80% 50%,#17120b 0 5px,#a98442 6px 7px,transparent 8px)}
+.train-carriage-top{height:22px;display:flex;justify-content:space-between;align-items:center;padding:0 11px;background:#4a3519;border-bottom:1px solid #98743c;color:#f4d997;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.train-carriage-top span:last-child{color:#d1b16f}
+.train-art{height:220px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at center,#755528 0,#302111 52%,#100e0b 100%);border-bottom:1px solid #65491f}
+.train-art:before{content:"";position:absolute;inset:12px;border:1px solid #d9b66a55;pointer-events:none}
+.train-art img{width:100%;height:100%;object-fit:contain;padding:14px;position:relative;z-index:1;transition:transform .35s}
+.train-carriage:hover .train-art img{transform:scale(1.035)}
+.train-art-placeholder{color:#f0d28c;font:70px Georgia,serif;text-shadow:0 0 25px #d8b66b66}
+.train-carriage-body{padding:15px 15px 18px;min-height:174px;display:flex;flex-direction:column;gap:7px}
+.train-carriage-body h4{font:21px/1.15 Georgia,serif;color:#f3e3bc;margin:0;overflow-wrap:anywhere}
+.train-collection{font-size:11px;color:#d6b778;letter-spacing:.04em;overflow-wrap:anywhere}
+.train-chain{font-size:10px;color:#aaa08b;text-transform:capitalize}
+.train-view-link{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;justify-content:center;min-height:40px;padding:9px 12px;background:#d7b56d;border:1px solid #f5dfa6;color:#151009;text-decoration:none;font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.train-view-link:hover{background:#f5dfa6;color:#090806}
+.train-controls{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 24px 22px;border-top:1px solid #49371e;background:#120f0a}
+.train-controls .exhibition-controls{display:flex;gap:10px;flex-wrap:wrap}
+#exhibitionPrevious,#exhibitionNext{background:#d7b56d;color:#100d07;border:2px solid #f5dfa6;text-shadow:none;min-width:132px;min-height:46px;box-shadow:0 3px 12px #0008;font-size:12px;font-weight:900;letter-spacing:.05em}
+#exhibitionPrevious:hover,#exhibitionNext:hover{background:#f5dfa6;border-color:#fff0c7;color:#090806}
 #exhibitionPrevious:focus-visible,#exhibitionNext:focus-visible{outline:3px solid #fff0c7;outline-offset:3px}
 #exhibitionPrevious:disabled,#exhibitionNext:disabled{background:#51452d;color:#e9dfc9;border-color:#786541;opacity:1}
-@media(max-width:800px){.exhibition-shell{grid-template-columns:1fr}.exhibition-art{min-height:300px;border-right:0;border-bottom:1px solid #6b512c}.exhibition-art img{min-height:300px}.exhibition-meta{grid-template-columns:1fr 1fr}.exhibition-meta>div:last-child{grid-column:1/-1}}
+#exhibitionStatus{font-size:12px;color:#c9b88f;margin:0;max-width:460px}
+.train-rail-glow{height:3px;background:linear-gradient(90deg,transparent,#c39a4e,#f1d58c,#c39a4e,transparent);box-shadow:0 0 14px #c39a4e55}
+@keyframes trainSignal{from{opacity:.45}to{opacity:1;box-shadow:0 0 15px #e9c875}}
+@media(max-width:600px){.train-marquee{padding:16px;gap:12px}.train-emblem{flex-basis:52px;width:52px;height:52px;font-size:27px}.train-lights{display:none}.train-viewport{padding:24px 15px 42px}.train-carriage{flex-basis:80vw;width:80vw}.train-art{height:200px}.train-controls{padding:16px;align-items:flex-start}.train-controls .exhibition-controls{width:100%;display:grid;grid-template-columns:1fr 1fr}.train-controls .exhibition-controls button{min-width:0;width:100%;font-size:11px;padding:10px 8px}.train-controls #exhibitionPrevious{grid-column:1}.train-controls #exhibitionNext{grid-column:2}}
 
 </style>
 </head>
@@ -93,19 +108,16 @@ body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),r
 
 
   <section class="section exhibition-section" id="grand-exhibition">
-    <div class="section-head"><div class="eyebrow">Private collection · Automatically rotating</div><h2>The Grand <em>Exhibition Hall.</em></h2><p class="section-intro">A rotating showcase featuring one representative unlisted NFT from each collection held by the configured Digital Antiquities wallet. This is an exhibition—not a sale or auction.</p></div>
-    <div class="exhibition-shell" aria-live="polite">
-      <div class="exhibition-art" id="exhibitionArt"><div class="exhibition-orbit" aria-hidden="true"></div><div class="exhibition-placeholder" id="exhibitionPlaceholder" aria-hidden="true">✧</div></div>
-      <div class="exhibition-info">
-        <div class="exhibition-kicker"><span class="status-dot"></span><span id="exhibitionPosition">PREPARING THE EXHIBITION</span><span class="exhibition-badge">NOT LISTED</span></div>
-        <h3 id="exhibitionTitle">Discovering your unlisted NFTs…</h3>
-        <p id="exhibitionDescription">The Grand Exhibition checks the NFTs held by your configured wallet and showcases those without an active listing.</p>
-        <div class="exhibition-meta"><div><small>COLLECTION</small><strong id="exhibitionCollection">—</strong></div><div><small>NETWORK</small><strong id="exhibitionChain">—</strong></div><div><small>STATUS</small><strong>Exhibition only</strong></div></div>
-        <div class="exhibition-controls"><button class="btn secondary" id="exhibitionPrevious" type="button" disabled>← Previous</button><button class="btn primary" id="exhibitionExplore" type="button" disabled>View NFT on OpenSea ↗</button><button class="btn secondary" id="exhibitionNext" type="button" disabled>Next →</button></div>
-        <p class="fineprint" id="exhibitionStatus" role="status" aria-live="polite">Loading your unlisted NFTs…</p>
+    <div class="section-head"><div class="eyebrow">Private collection · Royal Auction Express</div><h2>All aboard the <em>Grand Exhibition.</em></h2><p class="section-intro">A royal train of digital treasures. Each carriage presents one representative unlisted NFT from a collection held by your configured wallet. This is a showcase—not a sale or auction.</p></div>
+    <div class="exhibition-train" aria-label="Royal Auction Express NFT exhibition">
+      <div class="train-marquee"><div class="train-emblem" aria-hidden="true">♛</div><div><h3>Royal Auction Express</h3><p>Digital Antiquities · The private collection line</p></div><div class="train-lights"><span aria-hidden="true"></span> EXHIBITION IN MOTION</div></div>
+      <div class="train-rail-glow" aria-hidden="true"></div>
+      <div class="train-viewport" id="exhibitionViewport" tabindex="0" aria-label="NFT collection carriages. Scroll horizontally to explore.">
+        <div class="train-track" id="exhibitionTrainTrack"><div class="listing-empty">Preparing the Royal Auction Express and finding your unlisted NFTs…</div></div>
       </div>
+      <div class="train-controls"><p class="fineprint" id="exhibitionStatus" role="status" aria-live="polite">Loading your unlisted collections…</p><div class="exhibition-controls"><button class="btn secondary" id="exhibitionPrevious" type="button" disabled>← Previous Carriage</button><button class="btn secondary" id="exhibitionNext" type="button" disabled>Next Carriage →</button></div></div>
     </div>
-    <p class="fineprint">Only NFTs returned by OpenSea as held by the configured wallet can appear here. Active listings are excluded, and only one representative NFT is shown per collection. The artwork rotates automatically every 8 seconds; no bids or sale availability are implied.</p>
+    <p class="fineprint">Each carriage represents one collection and shows one representative NFT from your configured wallet. Active listings are excluded. The train advances automatically every 8 seconds; artwork and collection details come from OpenSea metadata. No bids, prices, or sale availability are implied.</p>
   </section>
 
 
@@ -262,18 +274,12 @@ async function loadListings() {
 }
 
 
-/* Grand Exhibition: fetch NFTs owned by the configured account, excluding active listings. */
-const exhibitionArt = document.getElementById('exhibitionArt');
-const exhibitionPlaceholder = document.getElementById('exhibitionPlaceholder');
-const exhibitionTitle = document.getElementById('exhibitionTitle');
-const exhibitionDescription = document.getElementById('exhibitionDescription');
-const exhibitionCollection = document.getElementById('exhibitionCollection');
-const exhibitionChain = document.getElementById('exhibitionChain');
-const exhibitionPosition = document.getElementById('exhibitionPosition');
+/* Royal Auction Express: one unlisted representative NFT per collection. */
+const exhibitionViewport = document.getElementById('exhibitionViewport');
+const exhibitionTrainTrack = document.getElementById('exhibitionTrainTrack');
 const exhibitionStatus = document.getElementById('exhibitionStatus');
 const exhibitionPrevious = document.getElementById('exhibitionPrevious');
 const exhibitionNext = document.getElementById('exhibitionNext');
-const exhibitionExplore = document.getElementById('exhibitionExplore');
 let exhibitionItems = [];
 let exhibitionIndex = 0;
 let exhibitionTimer = null;
@@ -284,69 +290,75 @@ function exhibitionUrl(item) {
   if (item.contract && item.identifier && item.chain && item.chain !== 'solana') return `https://opensea.io/assets/${encodeURIComponent(item.chain)}/${encodeURIComponent(item.contract)}/${encodeURIComponent(item.identifier)}`;
   return 'https://opensea.io/imbl0cks';
 }
-function showExhibitionItem(index) {
+function renderExhibitionTrain() {
   if (!exhibitionItems.length) return;
-  exhibitionIndex = (index + exhibitionItems.length) % exhibitionItems.length;
-  const item = exhibitionItems[exhibitionIndex];
-  const name = item.name || `NFT #${item.identifier || 'Untitled'}`;
-  const image = exhibitionImage(item);
-  const oldImage = exhibitionArt.querySelector('img');
-  if (oldImage) oldImage.remove();
-  exhibitionPlaceholder.style.display = image ? 'none' : 'block';
-  if (image) {
-    const img = document.createElement('img');
-    img.alt = name;
-    img.src = image;
-    img.loading = 'eager';
-    img.onerror = () => { img.remove(); exhibitionPlaceholder.style.display = 'block'; };
-    exhibitionArt.appendChild(img);
-  }
-  exhibitionTitle.textContent = name;
-  exhibitionDescription.textContent = item.description || 'A digital artifact from your collection, presented in the Grand Exhibition Hall. This NFT is not currently listed for sale by the connected account.';
-  exhibitionCollection.textContent = item.collection || 'Unspecified collection';
-  exhibitionChain.textContent = item.chain || 'Network unavailable';
-  exhibitionPosition.textContent = `COLLECTION ${String(exhibitionIndex + 1).padStart(2, '0')} / ${String(exhibitionItems.length).padStart(2, '0')}`;
-  exhibitionStatus.textContent = `Showing an unlisted NFT held by your configured wallet · rotates every 8 seconds.`;
-  exhibitionExplore.disabled = false;
+  exhibitionTrainTrack.innerHTML = exhibitionItems.map((item, index) => {
+    const name = item.name || `NFT #${item.identifier || 'Untitled'}`;
+    const collection = item.collection || 'Unspecified collection';
+    const image = exhibitionImage(item);
+    const imageMarkup = image
+      ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
+      : '';
+    const placeholderStyle = image ? 'display:none' : 'display:block';
+    return `<article class="train-carriage" data-carriage-index="${index}"><div class="train-carriage-top"><span>Carriage ${String(index + 1).padStart(2,'0')}</span><span>Private Collection</span></div><div class="train-art">${imageMarkup}<div class="train-art-placeholder" aria-hidden="true" style="${placeholderStyle}">✧</div></div><div class="train-carriage-body"><h4>${escapeHtml(name)}</h4><div class="train-collection">${escapeHtml(collection)}</div><div class="train-chain">${escapeHtml(item.chain || 'Network unavailable')} · Not listed</div><a class="train-view-link" href="${escapeHtml(exhibitionUrl(item))}" target="_blank" rel="noopener noreferrer">Explore Artifact ↗</a></div></article>`;
+  }).join('');
   exhibitionPrevious.disabled = exhibitionItems.length < 2;
   exhibitionNext.disabled = exhibitionItems.length < 2;
-  exhibitionExplore.onclick = () => window.open(exhibitionUrl(item), '_blank', 'noopener,noreferrer');
+  updateExhibitionPosition(false);
+}
+function updateExhibitionPosition(scrollIntoView = true) {
+  const cards = [...exhibitionTrainTrack.querySelectorAll('.train-carriage')];
+  if (!cards.length) return;
+  exhibitionIndex = (exhibitionIndex + cards.length) % cards.length;
+  if (scrollIntoView) cards[exhibitionIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  exhibitionStatus.textContent = `Carriage ${String(exhibitionIndex + 1).padStart(2,'0')} of ${String(cards.length).padStart(2,'0')} · one unlisted NFT representative per collection · auto-advances every 8 seconds.`;
+}
+function moveExhibition(direction) {
+  if (!exhibitionItems.length) return;
+  exhibitionIndex = (exhibitionIndex + direction + exhibitionItems.length) % exhibitionItems.length;
+  updateExhibitionPosition(true);
+  startExhibitionRotation();
 }
 function startExhibitionRotation() {
   if (exhibitionTimer) clearInterval(exhibitionTimer);
   exhibitionTimer = null;
-  if (exhibitionItems.length > 1) exhibitionTimer = setInterval(() => { if (!document.hidden) showExhibitionItem(exhibitionIndex + 1); }, 8000);
+  if (exhibitionItems.length > 1) exhibitionTimer = setInterval(() => {
+    if (!document.hidden) moveExhibition(1);
+  }, 8000);
 }
 async function loadExhibition() {
   if (exhibitionLoading) return;
   exhibitionLoading = true;
-  exhibitionStatus.textContent = 'Finding NFTs held by your wallet that are not actively listed…';
+  exhibitionStatus.textContent = 'Finding unlisted NFTs for your Royal Auction Express…';
   try {
     const response = await fetch('/api/opensea-exhibition', { headers: { 'Accept': 'application/json' } });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
     exhibitionItems = Array.isArray(data.nfts) ? data.nfts : [];
     if (!exhibitionItems.length) {
-      exhibitionTitle.textContent = 'The exhibition is awaiting its first artifact.';
-      exhibitionDescription.textContent = 'No unlisted NFTs were found for the configured wallet on the supported networks. NFTs must be held by this wallet and not have an active listing to appear here.';
-      exhibitionCollection.textContent = '—'; exhibitionChain.textContent = '—'; exhibitionPosition.textContent = 'EXHIBITION EMPTY';
-      exhibitionStatus.textContent = data.note || 'No unlisted NFTs found. If you own NFTs on another network, configure OPENSEA_EXHIBITION_CHAINS in Vercel.';
-      exhibitionPlaceholder.style.display = 'block';
-      const oldImage = exhibitionArt.querySelector('img'); if (oldImage) oldImage.remove();
-      exhibitionExplore.disabled = true; exhibitionPrevious.disabled = true; exhibitionNext.disabled = true;
-      if (exhibitionTimer) clearInterval(exhibitionTimer); exhibitionTimer = null;
+      exhibitionTrainTrack.innerHTML = '<div class="listing-empty">The Royal Auction Express is waiting for its first artifact. No unlisted NFTs were found for the configured wallet on the supported networks.</div>';
+      exhibitionStatus.textContent = data.note || 'No unlisted collection representatives found. Check your configured wallet and supported networks.';
+      exhibitionPrevious.disabled = true;
+      exhibitionNext.disabled = true;
+      if (exhibitionTimer) clearInterval(exhibitionTimer);
+      exhibitionTimer = null;
       return;
     }
-    showExhibitionItem(0);
+    exhibitionIndex = 0;
+    renderExhibitionTrain();
+    updateExhibitionPosition(true);
     startExhibitionRotation();
   } catch (error) {
-    exhibitionTitle.textContent = 'The exhibition could not be loaded.';
-    exhibitionDescription.textContent = 'The website could not retrieve your unlisted NFTs from OpenSea right now.';
-    exhibitionStatus.textContent = `${error.message || 'Please try again later.'} Confirm OPENSEA_API_KEY is configured in Vercel.`;
+    exhibitionTrainTrack.innerHTML = `<div class="listing-empty">The Royal Auction Express could not load your NFTs. ${escapeHtml(error.message || 'Please try again later.')}</div>`;
+    exhibitionStatus.textContent = 'Confirm OPENSEA_API_KEY is configured in Vercel and retry.';
   } finally { exhibitionLoading = false; }
 }
-exhibitionPrevious.addEventListener('click', () => { showExhibitionItem(exhibitionIndex - 1); startExhibitionRotation(); });
-exhibitionNext.addEventListener('click', () => { showExhibitionItem(exhibitionIndex + 1); startExhibitionRotation(); });
+exhibitionPrevious.addEventListener('click', () => moveExhibition(-1));
+exhibitionNext.addEventListener('click', () => moveExhibition(1));
+exhibitionViewport.addEventListener('keydown', event => {
+  if (event.key === 'ArrowRight') { event.preventDefault(); moveExhibition(1); }
+  if (event.key === 'ArrowLeft') { event.preventDefault(); moveExhibition(-1); }
+});
 loadExhibition();
 
 refreshListingsButton.addEventListener('click', loadListings);
