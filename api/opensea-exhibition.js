@@ -114,15 +114,28 @@ module.exports = async function handler(req, res) {
       seen.add(key);
       return true;
     });
-    // Put NFTs with usable artwork first; rotate the remaining items afterward.
+    // Choose exactly one representative NFT per collection for the Grand Exhibition.
+    // Prefer items with usable artwork; if collection metadata is missing, group by contract.
     unique.sort((a, b) => Number(Boolean(b.image_url)) - Number(Boolean(a.image_url)) || a.name.localeCompare(b.name));
-    if (!unique.length && errors.length === chains.length) {
+    const representatives = [];
+    const seenCollections = new Set();
+    for (const nft of unique) {
+      const collectionLabel = typeof nft.collection === 'string' ? nft.collection.trim().toLowerCase() : '';
+      const collectionKey = collectionLabel
+        ? `${nft.chain}:collection:${collectionLabel}`
+        : `${nft.chain}:contract:${normalize(nft.contract) || normalize(nft.identifier)}`;
+      if (seenCollections.has(collectionKey)) continue;
+      seenCollections.add(collectionKey);
+      representatives.push(nft);
+    }
+    if (!representatives.length && errors.length === chains.length) {
       return res.status(502).json({ error: `Could not retrieve owned NFTs. ${errors.join(' | ')}` });
     }
     return res.status(200).json({
-      nfts: unique,
+      nfts: representatives,
       chains_checked: chains,
-      note: unique.length ? '' : `No unlisted NFTs were found on the checked networks (${chains.join(', ')}).${errors.length ? ` Some networks could not be checked: ${errors.join(' | ')}` : ''}`,
+      collections_represented: representatives.length,
+      note: representatives.length ? '' : `No unlisted NFTs were found on the checked networks (${chains.join(', ')}).${errors.length ? ` Some networks could not be checked: ${errors.join(' | ')}` : ''}`,
       partial_errors: errors
     });
   } catch (error) {
