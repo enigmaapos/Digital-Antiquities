@@ -10,8 +10,8 @@ Included files:
 How it works:
 - Reads owned NFTs through the official OpenSea API for configured chains.
 - Checks the account's active listings and excludes those NFTs from the exhibition.
-- Rotates the remaining unlisted NFTs every 8 seconds, with Previous/Next controls.
-- Each item links to its OpenSea NFT page where available.
+- Selects one representative unlisted NFT per collection (preferring NFTs with artwork), then rotates those collection representatives every 8 seconds with high-contrast, readable Previous/Next controls.
+- Each collection is represented only once in the Grand Exhibition. Each representative links to its OpenSea NFT page where available.
 - Uses server-side caching and sequential requests to reduce API bursts.
 - Does not create fake bids, prices, sale claims, or auction countdowns.
 

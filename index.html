@@ -59,7 +59,11 @@ body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),r
 .exhibition-meta small{display:block;color:#b9a06b;font-size:9px;letter-spacing:.1em;margin-bottom:6px}
 .exhibition-meta strong{font:14px Georgia,serif;color:#f2e6c9;overflow-wrap:anywhere}
 .exhibition-controls{display:flex;gap:8px;flex-wrap:wrap}
-.exhibition-controls .btn{font-size:10px;padding:11px 12px}
+.exhibition-controls .btn{font-size:12px;padding:12px 15px;min-height:44px;font-weight:800;letter-spacing:.02em}
+#exhibitionPrevious,#exhibitionNext{background:var(--gold);color:#111009;border:2px solid var(--gold);text-shadow:none;min-width:112px;box-shadow:0 3px 12px #0007}
+#exhibitionPrevious:hover,#exhibitionNext:hover{background:var(--gold2);border-color:var(--gold2);color:#090806}
+#exhibitionPrevious:focus-visible,#exhibitionNext:focus-visible{outline:3px solid #fff0c7;outline-offset:3px}
+#exhibitionPrevious:disabled,#exhibitionNext:disabled{background:#51452d;color:#e9dfc9;border-color:#786541;opacity:1}
 @media(max-width:800px){.exhibition-shell{grid-template-columns:1fr}.exhibition-art{min-height:300px;border-right:0;border-bottom:1px solid #6b512c}.exhibition-art img{min-height:300px}.exhibition-meta{grid-template-columns:1fr 1fr}.exhibition-meta>div:last-child{grid-column:1/-1}}
 
 </style>
@@ -89,7 +93,7 @@ body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),r
 
 
   <section class="section exhibition-section" id="grand-exhibition">
-    <div class="section-head"><div class="eyebrow">Private collection · Automatically rotating</div><h2>The Grand <em>Exhibition Hall.</em></h2><p class="section-intro">A rotating showcase of NFTs currently held by the connected Digital Antiquities wallet that are not actively listed for sale. This is an exhibition—not a sale or auction.</p></div>
+    <div class="section-head"><div class="eyebrow">Private collection · Automatically rotating</div><h2>The Grand <em>Exhibition Hall.</em></h2><p class="section-intro">A rotating showcase featuring one representative unlisted NFT from each collection held by the configured Digital Antiquities wallet. This is an exhibition—not a sale or auction.</p></div>
     <div class="exhibition-shell" aria-live="polite">
       <div class="exhibition-art" id="exhibitionArt"><div class="exhibition-orbit" aria-hidden="true"></div><div class="exhibition-placeholder" id="exhibitionPlaceholder" aria-hidden="true">✧</div></div>
       <div class="exhibition-info">
@@ -101,7 +105,7 @@ body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),r
         <p class="fineprint" id="exhibitionStatus" role="status" aria-live="polite">Loading your unlisted NFTs…</p>
       </div>
     </div>
-    <p class="fineprint">Only NFTs returned by OpenSea as held by the configured wallet can appear here. Active listings are excluded. The artwork rotates automatically every 8 seconds; no bids or sale availability are implied.</p>
+    <p class="fineprint">Only NFTs returned by OpenSea as held by the configured wallet can appear here. Active listings are excluded, and only one representative NFT is shown per collection. The artwork rotates automatically every 8 seconds; no bids or sale availability are implied.</p>
   </section>
 
 
@@ -301,7 +305,7 @@ function showExhibitionItem(index) {
   exhibitionDescription.textContent = item.description || 'A digital artifact from your collection, presented in the Grand Exhibition Hall. This NFT is not currently listed for sale by the connected account.';
   exhibitionCollection.textContent = item.collection || 'Unspecified collection';
   exhibitionChain.textContent = item.chain || 'Network unavailable';
-  exhibitionPosition.textContent = `EXHIBIT ${String(exhibitionIndex + 1).padStart(2, '0')} / ${String(exhibitionItems.length).padStart(2, '0')}`;
+  exhibitionPosition.textContent = `COLLECTION ${String(exhibitionIndex + 1).padStart(2, '0')} / ${String(exhibitionItems.length).padStart(2, '0')}`;
   exhibitionStatus.textContent = `Showing an unlisted NFT held by your configured wallet · rotates every 8 seconds.`;
   exhibitionExplore.disabled = false;
   exhibitionPrevious.disabled = exhibitionItems.length < 2;
