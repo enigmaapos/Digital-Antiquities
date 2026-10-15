@@ -35,24 +35,31 @@ a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topba
 @media(max-width:800px){.listing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.listing-grid{grid-template-columns:1fr 1fr;gap:10px}.listing-body{padding:12px}.listing-body h3{font-size:17px}.listing-price{font-size:18px}.listing-body .btn{font-size:11px;padding:9px 10px}}
 
+
+/* Cinematic auction-house direction: presentation only; no fake live bidding */
+:root{--gold:#d7b56d;--gold2:#f5dfa6;--bg:#090909;--panel:#15130f;--panel2:#201b13;--line:#453821}
+body{background:radial-gradient(ellipse at 78% 5%,#49361b55 0,transparent 32%),radial-gradient(ellipse at 12% 25%,#242018 0,transparent 35%),var(--bg)}
+.brand strong{letter-spacing:.19em}.brand .mark{box-shadow:0 0 24px #d7b56d22}.eyebrow{letter-spacing:.24em}.hero{padding-top:76px}.hero h1 em,.section h2 em{color:var(--gold2);font-style:normal}.art-card{background:radial-gradient(ellipse at 50% 35%,#765827 0,#332515 30%,#16130e 72%);border-color:#8f7038;box-shadow:inset 0 0 90px #0008}.artifact{border-color:#e5c77a;text-shadow:0 0 38px #e5c77a88;box-shadow:0 0 48px #d6b7781a}.card-caption{border-color:#9c783c}.btn{border-radius:2px;text-transform:uppercase;letter-spacing:.055em}.btn.primary{box-shadow:0 5px 20px #d7b56d18}.auction-hall{padding-top:0}.auction-stage{display:grid;grid-template-columns:.85fr 1.15fr;border:1px solid #6b512c;background:linear-gradient(135deg,#21190e,#100f0d 55%);box-shadow:0 20px 60px #0005}.stage-art{min-height:390px;position:relative;overflow:hidden;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#9a7533 0,#49351b 20%,#21180e 52%,#0d0c0a 78%);border-right:1px solid #6b512c}.stage-art:before{content:"";position:absolute;inset:24px;border:1px solid #d8b66b55}.stage-art:after{content:"";position:absolute;inset:40px;border:1px solid #d8b66b28}.stage-orbit{position:absolute;width:210px;height:210px;border:1px solid #e8cc8a99;border-radius:50%;box-shadow:0 0 0 20px #d8b66b0b,0 0 0 44px #d8b66b0a,0 0 60px #d8b66b24}.stage-glyph{font:120px Georgia,serif;color:#f1d58c;text-shadow:0 0 40px #f1d58c66;z-index:1}.stage-lot{position:absolute;left:20px;right:20px;bottom:18px;text-align:center;color:#e2c37c;font-size:10px;letter-spacing:.2em;z-index:2}.stage-details{padding:clamp(24px,4vw,46px);align-self:center}.stage-label{font-size:10px;letter-spacing:.15em;color:var(--gold2);display:flex;align-items:center;gap:9px;flex-wrap:wrap}.status-dot{width:7px;height:7px;background:#c5a55f;border-radius:50%;box-shadow:0 0 10px #c5a55f66}.coming-soon{border:1px solid #786039;padding:4px 7px;color:#bfb49b;font-size:9px}.stage-details h3{font:clamp(30px,4vw,43px)/1.1 Georgia,serif;margin:22px 0 12px}.stage-details>p{color:#c4bdae;font-size:14px;max-width:560px}.stage-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-block:1px solid #4b3b25;padding:20px 0;margin:24px 0}.stage-features small{display:block;color:#b9a06b;font-size:9px;letter-spacing:.1em;margin-bottom:7px}.stage-features strong{font:16px Georgia,serif;color:#f2e6c9}.stage-details .fineprint{margin-bottom:0}.listing-card{border-color:#4b3b25;background:linear-gradient(160deg,#20190f,#100f0d);transition:transform .2s,border-color .2s,box-shadow .2s}.listing-card:hover{transform:translateY(-3px);border-color:#9b7739;box-shadow:0 12px 32px #0006}.listing-price{color:var(--gold2)}.listing-body .btn{margin-top:8px}.stat strong{font-size:21px}.manifesto{background:linear-gradient(120deg,#21190e,#15120d);border-color:#4b3b25}.tile,.trustbox{background:linear-gradient(160deg,#1d180f,#11100d);border-color:#40321f}.callout{background:linear-gradient(130deg,#302311,#15120d);border-color:#876831}.footer{border-color:#453821}
+@media(max-width:800px){.auction-stage{grid-template-columns:1fr}.stage-art{min-height:290px;border-right:0;border-bottom:1px solid #6b512c}.stage-orbit{width:170px;height:170px}.stage-glyph{font-size:95px}.stage-features{grid-template-columns:1fr;gap:14px}.stage-features>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.stage-features small{margin:0}}
+
 </style>
 </head>
 <body>
 <header class="wrap topbar">
   <a class="brand" href="#top" aria-label="Digital Antiquities home"><span class="mark">D</span><span><strong>Digital Antiquities</strong><small>The Early Mint Archive</small></span></a>
-  <nav class="nav" aria-label="Main navigation"><a href="#mission">Mission</a><a href="#method">Method</a><a href="#principles">Principles</a><a href="#connect">Connect</a></nav>
+  <nav class="nav" aria-label="Main navigation"><a href="#auction-hall">Auction Hall</a><a href="#listings">The Gallery</a><a href="#mission">Our Vision</a><a href="#connect">OpenSea</a></nav>
 </header>
 <main id="top" class="wrap">
   <section class="hero">
     <div>
-      <div class="eyebrow">Independent NFT research · OpenSea</div>
-      <h1>Preserving the <em>history</em> of our digital world.</h1>
-      <p class="lead">I’m building <strong>Digital Antiquities</strong> around one idea: NFTs can be more than digital images. Some may deserve to be documented as artifacts of blockchain and internet history—through verifiable provenance, genuine scarcity, and a story worth preserving.</p>
+      <div class="eyebrow">A cinematic digital auction house · OpenSea connected</div>
+      <h1>Every artifact has a story. <em>Every bid makes history.</em></h1>
+      <p class="lead"><strong>Digital Antiquities</strong> is evolving into a dramatic, luxury-style home for digital collectibles—where discoveries are presented like treasured artifacts, collectors can explore each lot, and the future vision is built around real, transparent auctions.</p>
       <div class="actions">
-        <a class="btn primary" href="#mission">Explore the mission <span aria-hidden="true">↗</span></a>
-        <a class="btn secondary" href="#connect">View OpenSea profile <span aria-hidden="true">↗</span></a>
+        <a class="btn primary" href="#listings">Explore available lots <span aria-hidden="true">↗</span></a>
+        <a class="btn secondary" href="#auction-hall">Enter the Auction Hall <span aria-hidden="true">↘</span></a>
       </div>
-      <p class="editable-note">Before publishing, replace the OpenSea profile link in this file with your real profile URL.</p>
+      <p class="editable-note">Current OpenSea listings are live marketplace listings. Genuine on-site bidding is a future phase and is not enabled yet.</p>
     </div>
     <aside class="art-card" aria-label="Digital Antiquities visual identity">
       <div class="artifact" aria-hidden="true">✧</div>
@@ -61,29 +68,44 @@ a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topba
   </section>
 
 
+  <section class="section auction-hall" id="auction-hall">
+    <div class="section-head"><div class="eyebrow">The future of Digital Antiquities</div><h2>Welcome to the <em>Auction Hall.</em></h2><p class="section-intro">A preview of the experience we are building: cinematic lot presentations, clear auction rules, genuine competitive bidding, and verified results. This preview is not a live auction and does not accept bids.</p></div>
+    <div class="auction-stage">
+      <div class="stage-art" aria-hidden="true"><div class="stage-orbit"></div><div class="stage-glyph">✧</div><span class="stage-lot">DIGITAL ANTIQUITIES · LOT PREVIEW</span></div>
+      <div class="stage-details">
+        <div class="stage-label"><span class="status-dot"></span> AUCTION HOUSE EXPERIENCE <span class="coming-soon">IN DEVELOPMENT</span></div>
+        <h3>The Grand Auction Hall</h3>
+        <p>Every featured artifact will have its own presentation, lot details, provenance notes, and a clear route to the real marketplace or supported auction.</p>
+        <div class="stage-features"><div><small>01 / DISCOVER</small><strong>Featured lots</strong></div><div><small>02 / COMPETE</small><strong>Real bidding planned</strong></div><div><small>03 / VERIFY</small><strong>Transparent results</strong></div></div>
+        <a class="btn primary" href="#listings">Browse current OpenSea listings <span aria-hidden="true">↗</span></a>
+        <p class="fineprint">No simulated bids, fake bidder activity, or artificial countdowns. Live auction features will be added only when genuine auction functionality is connected.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="listings">
-    <div class="section-head"><div class="eyebrow">OpenSea marketplace · Live data</div><h2>Currently Listed Artifacts.</h2><p class="section-intro">Only active listings associated with the connected account are shown here. Select any artifact to view its listing on OpenSea.</p></div>
+    <div class="section-head"><div class="eyebrow">The current gallery · Live OpenSea data</div><h2>Available <em>Artifacts.</em></h2><p class="section-intro">These are active listings returned by OpenSea for the connected account. They may be fixed-price listings rather than auctions. Open each listing to confirm its current price and sale terms on OpenSea.</p></div>
     <div class="listings-toolbar"><span class="listing-status" id="listingStatus" role="status" aria-live="polite">Loading active listings…</span><button class="btn secondary" id="refreshListings" type="button"><span class="refresh-icon" aria-hidden="true">↻</span> <span>Refresh listings</span></button></div>
     <div class="listing-grid" id="listingGrid"><div class="listing-empty">Connecting to OpenSea listings…</div></div>
     <p class="fineprint">Listing availability and prices come from OpenSea's API and may change. OpenSea is the source of truth for each listing.</p>
   </section>
 
-  <section class="stats" aria-label="Project principles">
-    <div class="stat"><strong>Provenance first</strong><span>Prefer records that can be checked.</span></div>
-    <div class="stat"><strong>Scarcity with evidence</strong><span>Look beyond labels and marketing.</span></div>
-    <div class="stat"><strong>Preservation over hype</strong><span>History and market price are different questions.</span></div>
+  <section class="stats" aria-label="Auction house principles">
+    <div class="stat"><strong>Real bids only</strong><span>Competitive bidding must be genuine and verifiable.</span></div>
+    <div class="stat"><strong>Clear auction rules</strong><span>Terms, timing, and settlement should be transparent.</span></div>
+    <div class="stat"><strong>Every artifact has a story</strong><span>Presentation with provenance, not hype.</span></div>
   </section>
 
   <section class="section" id="mission">
-    <div class="section-head"><div class="eyebrow">The mission</div><h2>A different way to look at NFTs.</h2><p class="section-intro">Physical antiques help us understand earlier generations. Digital artifacts may one day help future collectors understand the culture, creativity, and technology of our own era. My goal is to research that possibility carefully—not to label every old token a treasure.</p></div>
+    <div class="section-head"><div class="eyebrow">The vision behind the house</div><h2>More than a listing. An <em>occasion.</em></h2><p class="section-intro">We want digital collectibles to feel considered and memorable: introduced with context, presented with care, and exchanged through transparent marketplace or auction mechanics. The drama belongs in the experience—not in misleading claims or invented bids.</p></div>
     <div class="manifesto">
       <div><div class="eyebrow">The founding idea</div></div>
-      <div><blockquote>“What if we stopped treating NFTs as disposable digital images and started preserving them as artifacts of our digital civilization?”</blockquote><p style="margin-top:22px">Digital Antiquities is an independent collecting and research concept focused on discovery, documentation, and long-term preservation. It begins with curiosity, evidence, and respect for digital history.</p></div>
+      <div><blockquote>“Every artifact has a story. Every bid makes history.”</blockquote><p style="margin-top:22px">Our ambition is to bring the atmosphere of an exclusive auction house to digital collecting: a grand hall, carefully presented lots, genuine competition, and trustworthy records. The experience will grow in phases, beginning with the connected OpenSea gallery and moving toward real auctions when the required infrastructure is ready.</p></div>
     </div>
   </section>
 
   <section class="section" id="method">
-    <div class="section-head"><div class="eyebrow">Research approach</div><h2>What makes an NFT worth investigating?</h2><p class="section-intro">I’m interested in overlooked digital collectibles that may have meaningful origins. No single factor proves value; the strongest candidates are those whose history and characteristics can be checked.</p></div>
+    <div class="section-head"><div class="eyebrow">The collector standard</div><h2>Drama in presentation. Transparency in every detail.</h2><p class="section-intro">A premium auction atmosphere should never replace facts. Each artifact should be presented with care while keeping authenticity, provenance, listing terms, and uncertainty clear.</p></div>
     <div class="grid">
       <article class="tile"><div class="num">01</div><h3>Early provenance</h3><p>Investigate verifiable creation or mint history and how close an item is to the early use of its contract or collection.</p></article>
       <article class="tile"><div class="num">02</div><h3>Genuine scarcity</h3><p>Examine token supply and available evidence. A small supply can be relevant, but scarcity alone does not create demand.</p></article>
@@ -95,7 +117,7 @@ a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topba
   </section>
 
   <section class="section" id="principles">
-    <div class="section-head"><div class="eyebrow">Principles I stand for</div><h2>Research honestly. Collect thoughtfully.</h2><p class="section-intro">Trust matters more than making an item sound rare. I want the story behind a collectible to be understandable, inspectable, and clearly separated from speculation.</p></div>
+    <div class="section-head"><div class="eyebrow">The rules of the house</div><h2>Prestige is earned through trust.</h2><p class="section-intro">The auction-house style should feel exciting, but every price, bid, deadline, ownership claim, and result must be represented honestly.</p></div>
     <div class="trust">
       <article class="trustbox"><h3>What I aim to document</h3><ul><li>Contract address, network, and token ID</li><li>Creation or mint date, when verifiable</li><li>Supply and provenance evidence</li><li>Collection context and available metadata</li><li>Known uncertainties and missing information</li></ul></article>
       <article class="trustbox"><h3>What I will not promise</h3><ul><li>Guaranteed appreciation or future resale</li><li>That every old or rare NFT is historically important</li><li>That a listing price proves market value</li><li>Historical claims that the evidence cannot support</li><li>That research removes the risks of NFT ownership</li></ul></article>
@@ -104,24 +126,24 @@ a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topba
   </section>
 
   <section class="section">
-    <div class="section-head"><div class="eyebrow">The long-term vision</div><h2>From discovery to a digital archive.</h2><p class="section-intro">The project can grow step by step—starting with research into existing NFTs, then building documented case studies, a transparent classification approach, and eventually a community that values digital preservation.</p></div>
+    <div class="section-head"><div class="eyebrow">The roadmap</div><h2>From gallery to a genuine auction house.</h2><p class="section-intro">We will build the experience in stages: first the cinematic presentation, then real auction mechanics, and finally collector tools—without pretending future features already exist.</p></div>
     <div class="process">
-      <div class="step"><small>Phase 01</small><h3>Discover</h3><p>Search for overlooked candidates and record why each one merits a closer look.</p></div>
-      <div class="step"><small>Phase 02</small><h3>Verify</h3><p>Check the available dates, supply, creator context, and transaction evidence.</p></div>
-      <div class="step"><small>Phase 03</small><h3>Archive</h3><p>Publish clear notes that distinguish verified facts from interpretation.</p></div>
-      <div class="step"><small>Phase 04</small><h3>Preserve</h3><p>Build a community around digital history, responsible collecting, and lasting documentation.</p></div>
+      <div class="step"><small>Phase 01</small><h3>Present the lots</h3><p>Turn the existing live OpenSea gallery into a polished, cinematic auction-house experience.</p></div>
+      <div class="step"><small>Phase 02</small><h3>Connect real auctions</h3><p>Support genuine auction listings with clear start/end times, terms, and verified bids.</p></div>
+      <div class="step"><small>Phase 03</small><h3>Verify the result</h3><p>Show confirmed outcomes and transaction evidence rather than simulated activity.</p></div>
+      <div class="step"><small>Phase 04</small><h3>Build the collectors’ house</h3><p>Add watchlists, alerts, profiles, and an archive of completed auction events.</p></div>
     </div>
   </section>
 
   <section class="section" id="connect">
     <div class="callout">
-      <div><div class="eyebrow">Follow the project</div><h2>Help give digital history a place to live.</h2><p>I welcome collectors, researchers, artists, and curious people who believe digital artifacts deserve careful investigation. Explore the work, ask questions, and judge each collectible on its evidence.</p></div>
+      <div><div class="eyebrow">Enter the house</div><h2>The next discovery begins here.</h2><p>Explore the current gallery on OpenSea and follow Digital Antiquities as we build toward a genuine digital auction experience—one artifact, one story, and one verified transaction at a time.</p></div>
       <div class="actions" style="margin-top:0;min-width:max-content"><a class="btn primary" id="openseaLink" href="https://opensea.io/imbl0cks" target="_blank" rel="noopener noreferrer">Visit my OpenSea profile ↗</a></div>
     </div>
     <p class="editable-note">Personalize this page before sharing: Your OpenSea profile link is already connected. You can replace the first-person text with your preferred creator name. You can also replace the first-person text with your name or preferred creator name.</p>
   </section>
 </main>
-<footer class="wrap footer"><div><strong>Digital Antiquities</strong><br>Preserving the history of our digital world.</div><div>Independent research · OpenSea ecosystem<br><span>© <span id="year"></span> Digital Antiquities</span></div></footer>
+<footer class="wrap footer"><div><strong>Digital Antiquities</strong><br>Every artifact has a story. Every bid makes history.</div><div>Independent research · OpenSea ecosystem<br><span>© <span id="year"></span> Digital Antiquities</span></div></footer>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 /* PERSONALIZE: Your OpenSea profile: https://opensea.io/imbl0cks */
@@ -137,6 +159,15 @@ function formatListingPrice(price) {
   const amount = Number.isFinite(raw) ? raw / (10 ** decimals) : NaN;
   const currency = price.currency || '';
   return Number.isFinite(amount) ? `${amount.toLocaleString(undefined,{maximumFractionDigits:8})} ${currency}`.trim() : 'Price unavailable';
+}
+function normalizeImageUrl(value) {
+  if (typeof value !== 'string') return '';
+  const raw = value.trim();
+  if (!raw) return '';
+  if (raw.startsWith('ipfs://')) return 'https://ipfs.io/ipfs/' + raw.slice(7).replace(/^ipfs\//, '');
+  if (raw.startsWith('ar://')) return 'https://arweave.net/' + raw.slice(5);
+  if (raw.startsWith('//')) return 'https:' + raw;
+  return raw;
 }
 function listingUrl(item) {
   const asset = item.asset || {};
@@ -155,9 +186,9 @@ function renderListings(items) {
     const nft = item.nft || item.item || asset;
     const metadata = nft.metadata || asset.metadata || {};
     const media = Array.isArray(nft.media) ? nft.media[0] : null;
-    const image = nft.display_image_url || nft.image_url || nft.image_original_url || nft.image ||
+    const image = normalizeImageUrl(nft.display_image_url || nft.image_url || nft.image_original_url || nft.image ||
       metadata.image || metadata.image_url || (media && (media.gateway || media.url)) ||
-      asset.display_image_url || asset.image_url || asset.image_original_url || asset.image || '';
+      asset.display_image_url || asset.image_url || asset.image_original_url || asset.image || '');
     const name = asset.name || (asset.identifier ? `NFT #${asset.identifier}` : `Listed artifact ${index + 1}`);
     const collection = asset.collection || asset.collection_name || '';
     const price = item.price && item.price.current ? item.price.current : null;
@@ -171,6 +202,7 @@ async function loadListings() {
   listingsLoading = true;
   refreshListingsButton.disabled = true;
   listingStatus.textContent = 'Loading active listings…';
+  refreshListingsButton.innerHTML = '<span class="refresh-icon" aria-hidden="true">↻</span> <span>Refreshing…</span>';
   try {
     const response = await fetch('/api/opensea-listings', { headers: { 'Accept': 'application/json' } });
     const data = await response.json();
